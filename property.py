@@ -3,6 +3,8 @@ import os
 import numpy as np
 from bs4 import BeautifulSoup
 import requests
+
+
 class Property:
     def __init__(self, dct={}):
         self.size            = dct.get('size', np.nan)
@@ -22,7 +24,7 @@ class Property:
 
 class House(Property):
     def __init__(self, dct={}):
-        Property.__init__(dct=dct)        
+        Property.__init__(dct=dct)
         self.property_size   = dct.get('property_size', np.nan)
         self.land_size       = dct.get('land_size', np.nan)
         self.room_number     = dct.get('room_number', np.nan)
@@ -37,12 +39,11 @@ class House(Property):
         self.cellar          = dct.get('cellar', '')
         self.parking         = dct.get('parking', '')
         self.garage          = Garage(dct=dct)
-        
+
 
 class Garage(Property):
     def __init__(self, dct={}):
-        Property.__init__(dct=dct)        
-
+        Property.__init__(dct=dct)
 
 
 class Advertiser:
@@ -50,3 +51,35 @@ class Advertiser:
         self.name   = dct.get('name', '')
         self.phone  = dct.get('phone', '')
         self.agency = dct.get('agency', '')
+
+
+class PropertyContainer:
+    def __init__(self):
+        self._item = list()
+
+    def add(self, prop):
+        self._item.append(prop)
+
+    def __getitem__(self, key):
+        return self._item[key]
+
+    def __len__(self):
+        return len(self._item)
+
+
+class PropertyContainerIterator:
+   ''' Iterator class '''
+   def __init__(self, prop):
+       # Team object reference
+       self._prop = prop
+       # member variable to keep track of current index
+       self._index = 0
+
+   def __next__(self):
+       ''''Returns the next value from team object's lists '''
+       if self._index < len(self._prop._item):
+           result = self._prop._item[self._index]
+           self._index +=1
+           return result
+       # End of Iteration
+       raise StopIteration
