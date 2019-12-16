@@ -25,7 +25,6 @@ class Property:
 class House(Property):
     def __init__(self, dct={}):
         Property.__init__(dct=dct)
-        self.property_size   = dct.get('property_size', np.nan)
         self.land_size       = dct.get('land_size', np.nan)
         self.room_number     = dct.get('room_number', np.nan)
         self.comfort         = dct.get('comfort', '')
@@ -65,6 +64,9 @@ class PropertyContainer:
 
     def __len__(self):
         return len(self._item)
+    
+    def to_dataframe(self):
+        pass
 
 
 class PropertyContainerIterator:
@@ -83,3 +85,44 @@ class PropertyContainerIterator:
            return result
        # End of Iteration
        raise StopIteration
+
+if __name__ == "__main__":
+    empty_dct = {
+        'size'            = 'size',
+        'url'             = 'url',
+        'city'            = 'city',
+        'street'          = 'street',
+        'price'           = 'price',
+        'price_ccy'       = 'price_ccy',
+        'condition'       = 'condition',
+        'construction_year' = 'construction_year',
+        'description'     = 'description',
+        'coordinates'     = 'coordinates',
+        'unit_price'      = 'unit_price',
+        'unit_price_unit' = 'unit_price_unit',
+        'advertiser'      = 'advertiser',
+        'land_size'       = 'land_size', 
+        'room_number'     = 'room_number', 
+        'comfort'         = 'comfort', 
+        'energy_certificate' = 'energy_certificate', 
+        'stair_number'    = 'stair_number', 
+        'heating'         = 'heating', 
+        'aircondition'    = 'aircondition', 
+        'bathroom'        = 'bathroom', 
+        'view'            = 'view', 
+        'attic'           = 'attic', 
+        'cellar'          = 'cellar', 
+        'parking'         = 'parking', 
+        'garage'          = Garage(dct=gdct)
+    }
+    gdct = {
+        'size'            = 'size',
+        'url'             = 'url',
+        'city'            = 'city',
+        'street'          = 'street',
+        'price'           = 'price',
+        'price_ccy'       = 'price_ccy',
+        'condition'       = 'condition',
+        'construction_year' = 'construction_year',
+        'description'     = 'description',
+    }
