@@ -3,6 +3,9 @@ import os
 import numpy as np
 from bs4 import BeautifulSoup
 import requests
+import urllib
+import re
+import tqdm
 
 
 class Property:
@@ -130,7 +133,81 @@ class GeoCoordinates:
         self.north = dct.get('north', None)
         self.east = dct.get('east', None)
 
+
+class ScrapeData:
+    def __init__(self, dct={}):
+        self.property_type = dct.get('property_type', '')
+        self.city          = dct.get('city', '')
+        self.sale_type     = dct.get('sale_type', '')
+        # self.additional    = dct.get('additional', '')
+    
+    def create_query_url(self):
+        pass
+
+    def get_list_of_items_found(self):
+        pass
+
+    def query_search(self, url, header={}):
+        r = requests.get(url, headers=header)
+        if r.status_code == 200:
+            return r
+        else:
+            print(f'There was a problem whith request. Status code is {r.status_code}')
+            return None
+
+
+class ScrapeDataIngatlan(ScrapeData):
+    _url = 'https://ingatlan.com'
+    _queryterm = 'szukites'
+    _header = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+                'Content-type': 'application/json',
+                'Accept': '*/*',
+                }
+    
+    def __init__(self, dct = {}):
+        ScrapeData.__init__(self, dct=dct)
+        self.property_type = dct.get('property_type', 'haz')
+        self.sale_type     = dct.get('sale_type', 'elado')
+        self.container     = PropertyContainer()
+    
+    def create_query_url(self):
+        url = self._url + '/' + self._queryterm + '/' + self.sale_type + '+' + self.property_type + '+' + self.city.lower()
+        return url
+
+    def get_list_of_items_found(self):
+        url_main = self.create_query_url()
+        r = self.query_search(url_main, self._header)
+        bs = BeautifulSoup(r.text)
+        page_num = self._get_page_numbers(bs)
+        # start to page the findings
+        bslist = self._return_pages(url_main, page_num)
+        bslist.append(bs)
+
+    
+    def _return_pages(self, url_main, page_num):
+        pages = []
+        for ii in tqdm(range(2, page_num+1)):
+            url = url_main + f'?page={ii}'
+            r = self.query_search(url, self._header)
+            pages.append(BeautifulSoup(r.text, 'html.parser'))
+        return pages
+
+    def _get_page_numbers(self, bs):
+        elem = bs.find('div', attrs={'class':'pagination__page-number'})
+        # import pdb; pdb.set_trace()
+        if elem == None:
+            num = 1
+        else:
+            elem = elem.text.strip()
+            num = int(re.findall(r'\d+', elem)[1])
+        return num
+
+
+
 if __name__ == "__main__":
+    search_params = {'city': 'Szeged'}
+    s = ScrapeDataIngatlan(dct=search_params)
     adv = Advertiser({'name': 'Balint Krisztian', 'phone': '06305655655', 'agency':'Ving'})
     coor = GeoCoordinates({'north':45, 'east':22})
     gdct = {
