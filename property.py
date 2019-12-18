@@ -7,49 +7,49 @@ import requests
 
 class Property:
     def __init__(self, dct={}):
-        self.size            = dct.get('size', np.nan)
-        self.url             = dct.get('url', '')
-        self.city            = dct.get('city', '')
-        self.street          = dct.get('street', '')
-        self.price           = dct.get('price', np.nan)
-        self.price_ccy       = dct.get('price_ccy', '')
-        self.condition       = dct.get('condition', '')
-        self.construction_year = dct.get('construction_year', np.nan)
-        self.description     = dct.get('description', '')
-        self.coordinates     = dct.get('coordinates', '')
-        self.unit_price      = dct.get('unit_price', np.nan)
-        self.unit_price_unit = dct.get('unit_price_unit', '')
-        self.advertiser      = dct.get('advertiser', {})
+        self.size            = dct.get('size', None)
+        self.url             = dct.get('url', None)
+        self.city            = dct.get('city', None)
+        self.street          = dct.get('street', None)
+        self.price           = dct.get('price', None)
+        self.price_ccy       = dct.get('price_ccy', None)
+        self.condition       = dct.get('condition', None)
+        self.construction_year = dct.get('construction_year', None)
+        self.description     = dct.get('description', None)
+        self.coordinates     = dct.get('coordinates', None)
+        self.unit_price      = dct.get('unit_price', None)
+        self.unit_price_unit = dct.get('unit_price_unit', None)
+        self.advertiser      = dct.get('advertiser', None)
 
 
 class House(Property):
     def __init__(self, dct={}):
-        Property.__init__(dct=dct)
-        self.land_size       = dct.get('land_size', np.nan)
-        self.room_number     = dct.get('room_number', np.nan)
-        self.comfort         = dct.get('comfort', '')
-        self.energy_certificate = dct.get('energy_certificate', '')
-        self.stair_number    = dct.get('stair_number', np.nan)
-        self.heating         = dct.get('heating', '')
-        self.aircondition    = dct.get('aircondition', '')
-        self.bathroom        = dct.get('bathroom', '')
-        self.view            = dct.get('view', '')
-        self.attic           = dct.get('attic', '')
-        self.cellar          = dct.get('cellar', '')
-        self.parking         = dct.get('parking', '')
-        self.garage          = Garage(dct=dct)
+        Property.__init__(self,dct=dct)
+        self.land_size       = dct.get('land_size', None)
+        self.room_number     = dct.get('room_number', None)
+        self.comfort         = dct.get('comfort', None)
+        self.energy_certificate = dct.get('energy_certificate', None)
+        self.stair_number    = dct.get('stair_number', None)
+        self.heating         = dct.get('heating', None)
+        self.aircondition    = dct.get('aircondition', None)
+        self.bathroom        = dct.get('bathroom', None)
+        self.view            = dct.get('view', None)
+        self.attic           = dct.get('attic', None)
+        self.cellar          = dct.get('cellar', None)
+        self.parking         = dct.get('parking', None)
+        self.garage          = dct.get('garage', None)
 
 
 class Garage(Property):
     def __init__(self, dct={}):
-        Property.__init__(dct=dct)
+        Property.__init__(self, dct=dct)
 
 
 class Advertiser:
     def __init__(self, dct={}):
-        self.name   = dct.get('name', '')
-        self.phone  = dct.get('phone', '')
-        self.agency = dct.get('agency', '')
+        self.name   = dct.get('name', None)
+        self.phone  = dct.get('phone', None)
+        self.agency = dct.get('agency', None)
 
 
 class PropertyContainer:
@@ -66,7 +66,45 @@ class PropertyContainer:
         return len(self._item)
     
     def to_dataframe(self):
-        pass
+        # determining column names
+        colnames = self._create_colnames(self._item[0])
+        df = self._create_dataframe(colnames)
+
+    def _create_colnames(self, df):
+        type_list = (House, Garage, Advertiser, GeoCoordinates, Property)
+        colnames = ['type']
+        for key,value in self._item[0].__dict__.items():
+            # import pdb; pdb.set_trace()
+            if isinstance(value, type_list):
+                namestr = key#str.lower(value.__class__.__name__)
+                addstr = []
+                for key1 in value.__dict__.keys():
+                    addstr.append(namestr + '_' + key1)
+            else:
+                addstr = [key]
+            colnames = colnames + addstr
+        return colnames
+
+    def _create_dataframe(self, attrs):
+        df = pd.DataFrame()
+        for item in self._item:
+            tmp = {}
+            for name in attrs:
+                if name == 'type':
+                    tmp[name] = [item.__class__.__name__]
+                    continue
+                try:
+                    tmp[name] = [getattr(item,name)]
+                except AttributeError:
+                    atsplit = name.split('_', maxsplit=1)
+                    obj = getattr(item, atsplit[0])
+                    value = [getattr(obj, atsplit[1])]
+                    if value == {}:
+                        tmp[name] = None
+                    else:
+                        tmp[name] = value
+            df = pd.concat([df, pd.DataFrame(tmp)])
+        return df
 
 
 class PropertyContainerIterator:
@@ -86,43 +124,46 @@ class PropertyContainerIterator:
        # End of Iteration
        raise StopIteration
 
+
+class GeoCoordinates:
+    def __init__(self, dct={}):
+        self.north = dct.get('north', None)
+        self.east = dct.get('east', None)
+
 if __name__ == "__main__":
-    empty_dct = {
-        'size'            = 'size',
-        'url'             = 'url',
-        'city'            = 'city',
-        'street'          = 'street',
-        'price'           = 'price',
-        'price_ccy'       = 'price_ccy',
-        'condition'       = 'condition',
-        'construction_year' = 'construction_year',
-        'description'     = 'description',
-        'coordinates'     = 'coordinates',
-        'unit_price'      = 'unit_price',
-        'unit_price_unit' = 'unit_price_unit',
-        'advertiser'      = 'advertiser',
-        'land_size'       = 'land_size', 
-        'room_number'     = 'room_number', 
-        'comfort'         = 'comfort', 
-        'energy_certificate' = 'energy_certificate', 
-        'stair_number'    = 'stair_number', 
-        'heating'         = 'heating', 
-        'aircondition'    = 'aircondition', 
-        'bathroom'        = 'bathroom', 
-        'view'            = 'view', 
-        'attic'           = 'attic', 
-        'cellar'          = 'cellar', 
-        'parking'         = 'parking', 
-        'garage'          = Garage(dct=gdct)
-    }
+    adv = Advertiser({'name': 'Balint Krisztian', 'phone': '06305655655', 'agency':'Ving'})
+    coor = GeoCoordinates({'north':45, 'east':22})
     gdct = {
-        'size'            = 'size',
-        'url'             = 'url',
-        'city'            = 'city',
-        'street'          = 'street',
-        'price'           = 'price',
-        'price_ccy'       = 'price_ccy',
-        'condition'       = 'condition',
-        'construction_year' = 'construction_year',
-        'description'     = 'description',
+        'size'            : 25,
     }
+    dct = {
+        'size'            : 125,
+        'url'             : 'www.google.com',
+        'city'            : 'Szeged',
+        'street'          : 'Fekete Sas utca',
+        'price'           : 34000000,
+        'price_ccy'       : 'HUF',
+        'condition'       : 'kozepes allapotu',
+        'construction_year' : 2000,
+        'description'     : 'Blabal a akdfadf dfad adf ad sd sdsr er ncvnifvnsc v',
+        'coordinates'     : coor,
+        'unit_price'      : 230000,
+        'unit_price_unit' : 'HUF',
+        'advertiser'      : adv,
+        'land_size'       : 586, 
+        'room_number'     : 4, 
+        'comfort'         : 'osszkomfort', 
+        'energy_certificate' : 'A', 
+        'stair_number'    : '1', 
+        'heating'         : 'cirko', 
+        'aircondition'    : 'nincs', 
+        'bathroom'        : 'wcvel egyben', 
+        'attic'           : 'beepitheto', 
+        'cellar'          : 'nincs', 
+        'parking'         : 'utcan es az udvarban', 
+        'garage'          : Garage(dct=gdct)
+    }
+    h = House(dct)
+    cont = PropertyContainer()
+    for ii in range(5):
+        cont.add(h)
