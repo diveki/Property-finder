@@ -6,6 +6,7 @@ import requests
 import urllib
 import re
 import tqdm
+import time
 
 
 class Property:
@@ -67,7 +68,7 @@ class PropertyContainer:
 
     def __len__(self):
         return len(self._item)
-    
+
     def to_dataframe(self):
         # determining column names
         colnames = self._create_colnames(self._item[0])
@@ -140,7 +141,7 @@ class ScrapeData:
         self.city          = dct.get('city', '')
         self.sale_type     = dct.get('sale_type', '')
         # self.additional    = dct.get('additional', '')
-    
+
     def create_query_url(self):
         pass
 
@@ -148,6 +149,7 @@ class ScrapeData:
         pass
 
     def query_search(self, url, header={}):
+        time.sleep(5)
         r = requests.get(url, headers=header)
         if r.status_code == 200:
             return r
@@ -164,13 +166,13 @@ class ScrapeDataIngatlan(ScrapeData):
                 'Content-type': 'application/json',
                 'Accept': '*/*',
                 }
-    
+
     def __init__(self, dct = {}):
         ScrapeData.__init__(self, dct=dct)
         self.property_type = dct.get('property_type', 'haz')
         self.sale_type     = dct.get('sale_type', 'elado')
         self.container     = PropertyContainer()
-    
+
     def create_query_url(self):
         url = self._url + '/' + self._queryterm + '/' + self.sale_type + '+' + self.property_type + '+' + self.city.lower()
         return url
@@ -178,16 +180,28 @@ class ScrapeDataIngatlan(ScrapeData):
     def get_list_of_items_found(self):
         url_main = self.create_query_url()
         r = self.query_search(url_main, self._header)
-        bs = BeautifulSoup(r.text)
+        bs = BeautifulSoup(r.text, 'html.parser')
         page_num = self._get_page_numbers(bs)
         # start to page the findings
         bslist = self._return_pages(url_main, page_num)
         bslist.append(bs)
+        # get details from theresults
+        dct = {}
+        url_list = []
+        for item in bslist:
+            url_list.append(self._find_item_url(item))
+        return url_list
 
-    
+    def _find_item_url(self, item):
+        bs = item.find_all('a',attrs={'class':['listing__thumbnail', 'js-listing-active-area']})
+        url = []
+        for i in range(0, len(bs),2):
+            url = url + bs[i]['href']
+        return url
+
     def _return_pages(self, url_main, page_num):
         pages = []
-        for ii in tqdm(range(2, page_num+1)):
+        for ii in range(3):#tqdm.tqdm(range(2, page_num+1)):
             url = url_main + f'?page={ii}'
             r = self.query_search(url, self._header)
             pages.append(BeautifulSoup(r.text, 'html.parser'))
@@ -227,17 +241,17 @@ if __name__ == "__main__":
         'unit_price'      : 230000,
         'unit_price_unit' : 'HUF',
         'advertiser'      : adv,
-        'land_size'       : 586, 
-        'room_number'     : 4, 
-        'comfort'         : 'osszkomfort', 
-        'energy_certificate' : 'A', 
-        'stair_number'    : '1', 
-        'heating'         : 'cirko', 
-        'aircondition'    : 'nincs', 
-        'bathroom'        : 'wcvel egyben', 
-        'attic'           : 'beepitheto', 
-        'cellar'          : 'nincs', 
-        'parking'         : 'utcan es az udvarban', 
+        'land_size'       : 586,
+        'room_number'     : 4,
+        'comfort'         : 'osszkomfort',
+        'energy_certificate' : 'A',
+        'stair_number'    : '1',
+        'heating'         : 'cirko',
+        'aircondition'    : 'nincs',
+        'bathroom'        : 'wcvel egyben',
+        'attic'           : 'beepitheto',
+        'cellar'          : 'nincs',
+        'parking'         : 'utcan es az udvarban',
         'garage'          : Garage(dct=gdct)
     }
     h = House(dct)
