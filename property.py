@@ -181,14 +181,14 @@ class ScrapeDataIngatlan(ScrapeData):
         url_main = self.create_query_url()
         r = self.query_search(url_main, self._header)
         bs = BeautifulSoup(r.text, 'html.parser')
-        page_num = self._get_page_numbers(bs)
+        self._page_num = self._get_page_numbers(bs)
         # start to page the findings
-        bslist = self._return_pages(url_main, page_num)
-        bslist.append(bs)
+        self._bslist = self._return_pages(url_main, self._page_num)
+        self._bslist.append(bs)
         # get details from theresults
         dct = {}
         url_list = []
-        for item in bslist:
+        for item in self._bslist:
             url_list.append(self._find_item_url(item))
         return url_list
 
@@ -196,12 +196,13 @@ class ScrapeDataIngatlan(ScrapeData):
         bs = item.find_all('a',attrs={'class':['listing__thumbnail', 'js-listing-active-area']})
         url = []
         for i in range(0, len(bs),2):
+            import pdb; pdb.set_trace()
             url = url + bs[i]['href']
         return url
 
     def _return_pages(self, url_main, page_num):
         pages = []
-        for ii in range(3):#tqdm.tqdm(range(2, page_num+1)):
+        for ii in range(2,3):#tqdm.tqdm(range(2, page_num+1)):
             url = url_main + f'?page={ii}'
             r = self.query_search(url, self._header)
             pages.append(BeautifulSoup(r.text, 'html.parser'))
