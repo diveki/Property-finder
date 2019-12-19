@@ -177,7 +177,7 @@ class ScrapeDataIngatlan(ScrapeData):
         url = self._url + '/' + self._queryterm + '/' + self.sale_type + '+' + self.property_type + '+' + self.city.lower()
         return url
 
-    def get_list_of_items_found(self):
+    def get_url_list_of_items_found(self):
         url_main = self.create_query_url()
         r = self.query_search(url_main, self._header)
         bs = BeautifulSoup(r.text, 'html.parser')
@@ -186,18 +186,26 @@ class ScrapeDataIngatlan(ScrapeData):
         self._bslist = self._return_pages(url_main, self._page_num)
         self._bslist.append(bs)
         # get details from theresults
-        dct = {}
         url_list = []
         for item in self._bslist:
             url_list.append(self._find_item_url(item))
+        # import pdb; pdb.set_trace()
+        url_list = [self._url + ext for ls in url_list for ext in ls]
         return url_list
+
+    def get_target_pages(self, url_list):
+        bs = []
+        for url in tqdm.tqdm(url_list):
+            r = self.query_search(url, self._header)
+            bs.append(BeautifulSoup(r.text, 'html.parser'))
+        return bs
+
 
     def _find_item_url(self, item):
         bs = item.find_all('a',attrs={'class':['listing__thumbnail', 'js-listing-active-area']})
         url = []
         for i in range(0, len(bs),2):
-            import pdb; pdb.set_trace()
-            url = url + bs[i]['href']
+            url = url + [bs[i]['href']]
         return url
 
     def _return_pages(self, url_main, page_num):
