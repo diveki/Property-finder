@@ -8,6 +8,7 @@ import re
 import tqdm
 import time
 
+print('Reloaded')
 
 class Property:
     def __init__(self, dct={}):
@@ -200,6 +201,30 @@ class ScrapeDataIngatlan(ScrapeData):
             bs.append(BeautifulSoup(r.text, 'html.parser'))
         return bs
 
+    def populate_property(self, url, page):
+        dct = {}
+        dct = self._populate_url(dct, url)
+
+    def _populate_url(self, dct, url):
+        dct['url'] = url
+        return dct
+
+    def _populate_url(self, dct, city):
+        dct['city'] = city
+        return dct
+
+    def _populate_price(self, dct, bs):
+        unit_conversion = {'ezer': 1000., 'millió':1000000.}
+        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-price'})
+        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+        price = pr.text.split()
+        dct['price'] = float(price[0]) * unit_conversion[price[1]]
+        dct['price_ccy'] = price[2]
+        return dct
+
+    def _get_page_element(self, bs, tag_name, attrs={}):
+        elem = bs.find(tag_name, attrs=attrs)
+        return elem
 
     def _find_item_url(self, item):
         bs = item.find_all('a',attrs={'class':['listing__thumbnail', 'js-listing-active-area']})
