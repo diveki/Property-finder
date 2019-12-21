@@ -222,6 +222,85 @@ class ScrapeDataIngatlan(ScrapeData):
         dct['price_ccy'] = price[2]
         return dct
 
+    def _populate_size(self, dct, bs):
+        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-area-size'})
+        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+        size = pr.text.split()[0]
+        dct['size'] = float(size)
+        return dct
+
+    def _populate_land_size(self, dct, bs):
+        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-lot-size'})
+        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+        size = pr.text.split()[0]
+        dct['land_size'] = float(size)
+        return dct
+
+    def _populate_room_number(self, dct, bs):
+        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-room'})
+        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+        size = pr.text
+        dct['room_number'] = float(size)
+        return dct
+
+    def _populate_condition(self, dct, bs):
+        keyword = 'Ingatlan állapota'
+        elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
+        tds = elem.find_all('td')
+        tdtext = [td.text for td in tds]
+        ind = tdtext.index(keyword)
+        dct['condition'] = tdtext[ind+1]
+        return dct
+
+    def _populate_construction_year(self, dct, bs):
+        keyword = 'Építés éve'
+        elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
+        tds = elem.find_all('td')
+        tdtext = [td.text for td in tds]
+        ind = tdtext.index(keyword)
+        dct['construction_year'] = tdtext[ind+1]
+        return dct
+
+    def _populate_comfort(self, dct, bs):
+        keyword = 'Komfort'
+        value = self._get_td_element(bs,keyword)
+        dct['comfort'] = value
+        return dct
+
+    def _populate_energy_certificate(self, dct, bs):
+        keyword = 'Energiatanúsítvány'
+        value = self._get_td_element(bs,keyword)
+        dct['energy_certificate'] = value
+        return dct
+
+    def _populate_stair_number(self, dct, bs):
+        keyword = 'Épület szintjei'
+        value = self._get_td_element(bs,keyword)
+        dct['stair_number'] = value
+        return dct
+
+    def _populate_heating(self, dct, bs):
+        keyword = 'Fűtés'
+        value = self._get_td_element(bs,keyword)
+        dct['heating'] = value
+        return dct
+
+    def _populate_aircondition(self, dct, bs):
+        keyword = 'Légkondicionáló'
+        value = self._get_td_element(bs,keyword)
+        dct['aircondition'] = value
+        return dct
+
+    def _get_td_element(self, bs, keyword):
+        elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
+        tds = elem.find_all('td')
+        tdtext = [td.text for td in tds]
+        ind = tdtext.index(keyword)
+        value = tdtext[ind+1]
+        return value
+
+
+
     def _get_page_element(self, bs, tag_name, attrs={}):
         elem = bs.find(tag_name, attrs=attrs)
         return elem
