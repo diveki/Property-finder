@@ -291,6 +291,46 @@ class ScrapeDataIngatlan(ScrapeData):
         dct['aircondition'] = value
         return dct
 
+    def _populate_bathroom(self, dct, bs):
+        keyword = 'Fürdő és WC'
+        value = self._get_td_element(bs,keyword)
+        dct['bathroom'] = value
+        return dct
+
+    def _populate_view(self, dct, bs):
+        keyword = 'Kilátás'
+        value = self._get_td_element(bs,keyword)
+        dct['view'] = value
+        return dct
+
+    def _populate_attic(self, dct, bs):
+        keyword = 'Tetőtér'
+        value = self._get_td_element(bs,keyword)
+        dct['attic'] = value
+        return dct
+
+    def _populate_cellar(self, dct, bs):
+        keyword = 'Pince'
+        value = self._get_td_element(bs,keyword)
+        dct['cellar'] = value
+        return dct
+
+    def _populate_parking(self, dct, bs):
+        keyword = 'Parkolás'
+        value = self._get_td_element(bs,keyword)
+        dct['parking'] = value
+        return dct
+
+    def _populate_description(self, dct, bs):
+        elem = self._get_page_element(bs, 'div', attrs={'class':'long-description'})
+        dct['description'] = elem.text
+        return dct
+
+    def _populate_coordinates(self, dct, bs):
+        elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
+        # dct['coordinates'] = elem['id']
+        return elem
+
     def _get_td_element(self, bs, keyword):
         elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
         tds = elem.find_all('td')
@@ -330,11 +370,22 @@ class ScrapeDataIngatlan(ScrapeData):
             num = int(re.findall(r'\d+', elem)[1])
         return num
 
+def load_data():
+    f=open('target_urls.pkl', 'rb')
+    urls = pickle.load(f)
+    f.close()
+    f=open('target_pages.pkl', 'rb')
+    bs = pickle.load(f)
+    f.close()
+    return (urls, bs)
 
 
 if __name__ == "__main__":
     search_params = {'city': 'Szeged'}
     s = ScrapeDataIngatlan(dct=search_params)
+    import pickle
+    urls, bs = load_data()
+
     adv = Advertiser({'name': 'Balint Krisztian', 'phone': '06305655655', 'agency':'Ving'})
     coor = GeoCoordinates({'north':45, 'east':22})
     gdct = {
