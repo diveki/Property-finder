@@ -7,6 +7,13 @@ import urllib
 import re
 import tqdm
 import time
+import pickle
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+
+
 
 print('Reloaded')
 
@@ -135,12 +142,19 @@ class GeoCoordinates:
         self.north = dct.get('north', None)
         self.east = dct.get('east', None)
 
+    def __str__(self):
+        return '{north=' + str(self.north) + ' east=' + str(self.east) + '}'
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(north=' + str(self.north) + ', east=' + str(self.east) + ')'
+
 
 class ScrapeData:
     def __init__(self, dct={}):
         self.property_type = dct.get('property_type', '')
         self.city          = dct.get('city', '')
         self.sale_type     = dct.get('sale_type', '')
+        self._driver       = False
         # self.additional    = dct.get('additional', '')
 
     def create_query_url(self):
@@ -326,10 +340,36 @@ class ScrapeDataIngatlan(ScrapeData):
         dct['description'] = elem.text
         return dct
 
-    def _populate_coordinates(self, dct, bs):
-        elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
-        # dct['coordinates'] = elem['id']
-        return elem
+    def _populate_coordinates(self, dct, url):
+        if not self._driver:
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
+            self._driver = webdriver.Chrome(options=chrome_options)
+        self._driver.get(url)
+        element = self._driver.find_element_by_class_name('map-holder')
+        self._driver.execute_script("arguments[0].scrollIntoView();", element)
+        # import pdb; pdb.set_trace()
+        element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.ID, "details-map")))
+        try:
+            bs = BeautifulSoup(self._driver.page_source, 'html.parser')
+            openmap = bs.find('div', attrs={'id':'details-map'})
+            crd = openmap['data-bbox']
+            crd = self._get_coordinates_from_text(crd)
+        except:
+            print(f'`{url}` has some issues to provide coordinates!')
+        # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
+        dct['coordinates'] = crd
+        return dct
+
+    def _get_coordinates_from_text(self,text):
+        t = text.split(',')
+        N = int(len(t) / 2)
+        coor = []
+        for ii in range(N):
+            tmp = GeoCoordinates({'north':float(t[2*ii+1]), 'east':float(t[2*ii])})
+            coor.append(tmp)
+        return coor
 
     def _get_td_element(self, bs, keyword):
         elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
