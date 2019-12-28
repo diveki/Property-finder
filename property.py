@@ -63,6 +63,12 @@ class Advertiser:
         self.phone  = dct.get('phone', None)
         self.agency = dct.get('agency', None)
 
+    def __str__(self):
+        return '{name=' + str(self.name) + ' phone=' + str(self.phone) + ' agency=' + str(self.agency) + '}'
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}(name=' + str(self.name) + ' phone=' + str(self.phone) + ' agency=' + str(self.agency) + ')'
+
 
 class PropertyContainer:
     def __init__(self):
@@ -362,6 +368,56 @@ class ScrapeDataIngatlan(ScrapeData):
         dct['coordinates'] = crd
         return dct
 
+    def _populate_unit_price(self, dct):
+        try:
+            pr = dct['price']
+            sz = dct['size']
+            ccy = dct['price_ccy']
+            dct['unit_price'] = pr / sz
+            dct['unit_price_unit'] = ccy
+        except KeyError as e:
+            dct['unit_price'] = None
+            dct['unit_price_unit'] = None
+        return dct
+
+    def _populate_advertiser(self, dct, url):
+        if not self._driver:
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
+            self._driver = webdriver.Chrome(options=chrome_options)
+        self._driver.get(url)
+        element = self._driver.find_element_by_class_name('show-number')
+        element.click()
+        # import pdb; pdb.set_trace()
+        # element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "number phone-number-holder phone-number-visible")))
+        try:
+            bs = BeautifulSoup(self._driver.page_source, 'html.parser')
+            phone = bs.find('a', attrs={'class':'number phone-number-holder phone-number-visible'}).text
+            name = self._get_agent_name(bs)
+            agency = self._get_agency(bs)
+            ag = {'name':name, 'phone':phone, 'agency':agency}
+            ag = Advertiser(dct=ag)
+        except:
+            print(f'`{url}` has some issues to provide coordinates!')
+        # # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
+        dct['advertiser'] = ag
+        return dct
+
+    def _get_agent_name(self, bs):
+        elem = bs.find('div', attrs={'class':'agent-name'})
+        if elem:
+            return elem.text
+        else:
+            return None
+
+    def _get_agency(self, bs):
+        elem = bs.find('span', attrs={'class':'office-name'})
+        if elem:
+            return elem.text
+        else:
+            return None
+
     def _get_coordinates_from_text(self,text):
         t = text.split(',')
         N = int(len(t) / 2)
@@ -378,8 +434,6 @@ class ScrapeDataIngatlan(ScrapeData):
         ind = tdtext.index(keyword)
         value = tdtext[ind+1]
         return value
-
-
 
     def _get_page_element(self, bs, tag_name, attrs={}):
         elem = bs.find(tag_name, attrs=attrs)
