@@ -56,6 +56,10 @@ class Garage(Property):
     def __init__(self, dct={}):
         Property.__init__(self, dct=dct)
 
+class Flat(Property):
+    def __init__(self, dct={}):
+        Property.__init__(self, dct=dct)
+
 
 class Advertiser:
     def __init__(self, dct={}):
@@ -221,15 +225,57 @@ class ScrapeDataIngatlan(ScrapeData):
             bs.append(BeautifulSoup(r.text, 'html.parser'))
         return bs
 
+    def initialize_property_class(self):
+        if self.property_type in ['haz', 'house']:
+            return House
+        elif self.property_type in ['lakas', 'flat']:
+            return Flat
+        elif self.property_type in ['garazs', 'garage']:
+            return Garage
+        else:
+            raise TypeError('`self.property_type` has a wrong definition!!')
+
+    def get_properties(self):
+        urlslist = self.get_url_list_of_items_found()
+        pages = self.get_target_pages(urlslist)
+        prop_class = self.initialize_property_class()
+        for ii in tqdm.tqdm(range(len(urlslist))):
+            # import pdb; pdb.set_trace()
+            features = self.populate_property(urlslist[ii], pages[ii])
+            prop = prop_class(features)
+            self.container.add(prop)
+
     def populate_property(self, url, page):
         dct = {}
         dct = self._populate_url(dct, url)
+        dct = self._populate_city(dct, self.city)
+        dct = self._populate_price(dct, page)
+        dct = self._populate_size(dct, page)
+        dct = self._populate_land_size(dct, page)
+        dct = self._populate_room_number(dct, page)
+        dct = self._populate_condition(dct, page)
+        dct = self._populate_construction_year(dct, page)
+        dct = self._populate_comfort(dct, page)
+        dct = self._populate_energy_certificate(dct, page)
+        dct = self._populate_stair_number(dct, page)
+        dct = self._populate_heating(dct, page)
+        dct = self._populate_aircondition(dct, page)
+        dct = self._populate_bathroom(dct, page)
+        dct = self._populate_view(dct, page)
+        dct = self._populate_attic(dct, page)
+        dct = self._populate_cellar(dct, page)
+        dct = self._populate_parking(dct, page)
+        dct = self._populate_description(dct, page)
+        dct = self._populate_coordinates(dct, url)
+        dct = self._populate_unit_price(dct)
+        dct = self._populate_advertiser(dct, url)
+        return dct
 
     def _populate_url(self, dct, url):
         dct['url'] = url
         return dct
 
-    def _populate_url(self, dct, city):
+    def _populate_city(self, dct, city):
         dct['city'] = city
         return dct
 
@@ -238,7 +284,7 @@ class ScrapeDataIngatlan(ScrapeData):
         elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-price'})
         pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
         price = pr.text.split()
-        dct['price'] = float(price[0]) * unit_conversion[price[1]]
+        dct['price'] = float(price[0].replace(',','.')) * unit_conversion[price[1]]
         dct['price_ccy'] = price[2]
         return dct
 
@@ -260,7 +306,7 @@ class ScrapeDataIngatlan(ScrapeData):
         elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-room'})
         pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
         size = pr.text
-        dct['room_number'] = float(size)
+        dct['room_number'] = size
         return dct
 
     def _populate_condition(self, dct, bs):
@@ -268,8 +314,11 @@ class ScrapeDataIngatlan(ScrapeData):
         elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
         tds = elem.find_all('td')
         tdtext = [td.text for td in tds]
-        ind = tdtext.index(keyword)
-        dct['condition'] = tdtext[ind+1]
+        try:
+            ind = tdtext.index(keyword)
+            dct['condition'] = tdtext[ind+1]
+        except:
+            pass
         return dct
 
     def _populate_construction_year(self, dct, bs):
@@ -277,73 +326,109 @@ class ScrapeDataIngatlan(ScrapeData):
         elem = self._get_page_element(bs, 'div', attrs={'class':'paramterers'})
         tds = elem.find_all('td')
         tdtext = [td.text for td in tds]
-        ind = tdtext.index(keyword)
-        dct['construction_year'] = tdtext[ind+1]
+        try:
+            ind = tdtext.index(keyword)
+            dct['construction_year'] = tdtext[ind+1]
+        except:
+            pass
         return dct
 
     def _populate_comfort(self, dct, bs):
         keyword = 'Komfort'
-        value = self._get_td_element(bs,keyword)
-        dct['comfort'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['comfort'] = value
+        except:
+            pass
         return dct
 
     def _populate_energy_certificate(self, dct, bs):
         keyword = 'Energiatanúsítvány'
-        value = self._get_td_element(bs,keyword)
-        dct['energy_certificate'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['energy_certificate'] = value
+        except:
+            pass
         return dct
 
     def _populate_stair_number(self, dct, bs):
         keyword = 'Épület szintjei'
-        value = self._get_td_element(bs,keyword)
-        dct['stair_number'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['stair_number'] = value
+        except:
+            pass
         return dct
 
     def _populate_heating(self, dct, bs):
         keyword = 'Fűtés'
-        value = self._get_td_element(bs,keyword)
-        dct['heating'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['heating'] = value
+        except:
+            pass
         return dct
 
     def _populate_aircondition(self, dct, bs):
         keyword = 'Légkondicionáló'
-        value = self._get_td_element(bs,keyword)
-        dct['aircondition'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['aircondition'] = value
+        except:
+            pass
         return dct
 
     def _populate_bathroom(self, dct, bs):
         keyword = 'Fürdő és WC'
-        value = self._get_td_element(bs,keyword)
-        dct['bathroom'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['bathroom'] = value
+        except:
+            pass
         return dct
 
     def _populate_view(self, dct, bs):
         keyword = 'Kilátás'
-        value = self._get_td_element(bs,keyword)
-        dct['view'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['view'] = value
+        except:
+            pass
         return dct
 
     def _populate_attic(self, dct, bs):
         keyword = 'Tetőtér'
-        value = self._get_td_element(bs,keyword)
-        dct['attic'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['attic'] = value
+        except:
+            pass
         return dct
 
     def _populate_cellar(self, dct, bs):
         keyword = 'Pince'
-        value = self._get_td_element(bs,keyword)
-        dct['cellar'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['cellar'] = value
+        except:
+            pass
         return dct
 
     def _populate_parking(self, dct, bs):
         keyword = 'Parkolás'
-        value = self._get_td_element(bs,keyword)
-        dct['parking'] = value
+        try:
+            value = self._get_td_element(bs,keyword)
+            dct['parking'] = value
+        except:
+            pass
         return dct
 
     def _populate_description(self, dct, bs):
-        elem = self._get_page_element(bs, 'div', attrs={'class':'long-description'})
-        dct['description'] = elem.text
+        try:
+            elem = self._get_page_element(bs, 'div', attrs={'class':'long-description'})
+            dct['description'] = elem.text
+        except:
+            pass
         return dct
 
     def _populate_coordinates(self, dct, url):
@@ -387,10 +472,12 @@ class ScrapeDataIngatlan(ScrapeData):
             chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
             self._driver = webdriver.Chrome(options=chrome_options)
         self._driver.get(url)
-        element = self._driver.find_element_by_class_name('show-number')
-        element.click()
-        # import pdb; pdb.set_trace()
-        # element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "number phone-number-holder phone-number-visible")))
+        try:
+            element = self._driver.find_element_by_class_name('phone-number')
+            but = element.find_element_by_tag_name('button')
+            but.click()
+        except:
+            print('Could not click on phone number')
         try:
             bs = BeautifulSoup(self._driver.page_source, 'html.parser')
             phone = bs.find('a', attrs={'class':'number phone-number-holder phone-number-visible'}).text
@@ -399,7 +486,7 @@ class ScrapeDataIngatlan(ScrapeData):
             ag = {'name':name, 'phone':phone, 'agency':agency}
             ag = Advertiser(dct=ag)
         except:
-            print(f'`{url}` has some issues to provide coordinates!')
+            print(f'`{url}` has some issues to provide advertiser details!')
         # # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
         dct['advertiser'] = ag
         return dct
