@@ -478,6 +478,7 @@ class ScrapeDataIngatlan(ScrapeData):
             but.click()
         except:
             print('Could not click on phone number')
+            ag = None
         try:
             bs = BeautifulSoup(self._driver.page_source, 'html.parser')
             phone = bs.find('a', attrs={'class':'number phone-number-holder phone-number-visible'}).text
@@ -487,6 +488,7 @@ class ScrapeDataIngatlan(ScrapeData):
             ag = Advertiser(dct=ag)
         except:
             print(f'`{url}` has some issues to provide advertiser details!')
+            ag = None
         # # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
         dct['advertiser'] = ag
         return dct
