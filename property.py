@@ -91,6 +91,7 @@ class PropertyContainer:
         # determining column names
         colnames = self._create_colnames(self._item[0])
         df = self._create_dataframe(colnames)
+        return df
 
     def _create_colnames(self, df):
         type_list = (House, Garage, Advertiser, GeoCoordinates, Property)
@@ -240,7 +241,6 @@ class ScrapeDataIngatlan(ScrapeData):
         pages = self.get_target_pages(urlslist)
         prop_class = self.initialize_property_class()
         for ii in tqdm.tqdm(range(len(urlslist))):
-            # import pdb; pdb.set_trace()
             features = self.populate_property(urlslist[ii], pages[ii])
             prop = prop_class(features)
             self.container.add(prop)
@@ -438,10 +438,13 @@ class ScrapeDataIngatlan(ScrapeData):
             chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
             self._driver = webdriver.Chrome(options=chrome_options)
         self._driver.get(url)
-        element = self._driver.find_element_by_class_name('map-holder')
-        self._driver.execute_script("arguments[0].scrollIntoView();", element)
-        # import pdb; pdb.set_trace()
-        element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.ID, "details-map")))
+        try:
+            element = self._driver.find_element_by_class_name('map-holder')
+            self._driver.execute_script("arguments[0].scrollIntoView();", element)
+            element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.ID, "details-map")))
+        except:
+            print(f'`{url}` has some issues to provide the `map-holder` css element!')
+            crd = None
         try:
             bs = BeautifulSoup(self._driver.page_source, 'html.parser')
             openmap = bs.find('div', attrs={'id':'details-map'})
@@ -449,6 +452,7 @@ class ScrapeDataIngatlan(ScrapeData):
             crd = self._get_coordinates_from_text(crd)
         except:
             print(f'`{url}` has some issues to provide coordinates!')
+            crd = None
         # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
         dct['coordinates'] = crd
         return dct
