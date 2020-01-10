@@ -121,8 +121,11 @@ class PropertyContainer:
                 except AttributeError:
                     atsplit = name.split('_', maxsplit=1)
                     obj = getattr(item, atsplit[0])
-                    value = [getattr(obj, atsplit[1])]
-                    if value == {}:
+                    try:
+                        value = [getattr(obj, atsplit[1])]
+                    except AttributeError:
+                        tmp[name] = None
+                    if value == None:
                         tmp[name] = None
                     else:
                         tmp[name] = value
@@ -175,7 +178,7 @@ class ScrapeData:
         pass
 
     def query_search(self, url, header={}):
-        time.sleep(5)
+        time.sleep(3)
         r = requests.get(url, headers=header)
         if r.status_code == 200:
             return r
@@ -296,16 +299,22 @@ class ScrapeDataIngatlan(ScrapeData):
         return dct
 
     def _populate_land_size(self, dct, bs):
-        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-lot-size'})
-        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
-        size = pr.text.split()[0]
-        dct['land_size'] = float(size)
+        try:
+            elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-lot-size'})
+            pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+            size = float(pr.text.split()[0])
+        except:
+            size = None
+        dct['land_size'] = size
         return dct
 
     def _populate_room_number(self, dct, bs):
-        elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-room'})
-        pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
-        size = pr.text
+        try:
+            elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-room'})
+            pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
+            size = pr.text
+        except:
+            size = None
         dct['room_number'] = size
         return dct
 
@@ -529,7 +538,11 @@ class ScrapeDataIngatlan(ScrapeData):
         return value
 
     def _get_page_element(self, bs, tag_name, attrs={}):
-        elem = bs.find(tag_name, attrs=attrs)
+        try:
+            elem = bs.find(tag_name, attrs=attrs)
+        except AttributeError:
+            print(f'`{attrs}` is not found')
+            elem = None
         return elem
 
     def _find_item_url(self, item):
@@ -541,7 +554,8 @@ class ScrapeDataIngatlan(ScrapeData):
 
     def _return_pages(self, url_main, page_num):
         pages = []
-        for ii in range(2,3):#tqdm.tqdm(range(2, page_num+1)):
+        # for ii in range(2,3):#tqdm.tqdm(range(2, page_num+1)):
+        for ii in tqdm.tqdm(range(2, page_num+1)):
             url = url_main + f'?page={ii}'
             r = self.query_search(url, self._header)
             pages.append(BeautifulSoup(r.text, 'html.parser'))
