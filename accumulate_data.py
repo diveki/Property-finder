@@ -7,10 +7,10 @@ from property import *
 ### Collect data
 
 search_params = [
-                 {'city': 'Szeged', 'property_type': 'haz', 'sale_type': 'elado'},
+                #  {'city': 'Szeged', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Algyo', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Morahalom', 'property_type': 'haz', 'sale_type': 'elado'},
-                 {'city': 'Szeged', 'property_type': 'lakas', 'sale_type': 'elado'},
+                #  {'city': 'Szeged', 'property_type': 'lakas', 'sale_type': 'elado'},
                  {'city': 'Szeged', 'property_type': 'garazs', 'sale_type': 'elado'}
                  ]
 
