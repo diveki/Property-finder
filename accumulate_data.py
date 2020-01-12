@@ -13,8 +13,8 @@ def get_averages(df):
 
 def read_historical_data(fname):
     av_hist = pd.read_excel(fname)
-    colnames = av_hist.columns
     av_hist = av_hist.set_index('Date')
+    colnames = av_hist.columns
     return av_hist, colnames
 
 
@@ -40,10 +40,10 @@ av_hist, avhist_colnames = read_historical_data('averages.xlsx')
 
 ### Calculate stats on the properties
 av = get_averages(df)
-av = av[avhist_colnames]
+av = av.loc[:,avhist_colnames]
 
 ### concatenate historical and recent data
-av = pd.concat([av_hist, av])
+av = pd.concat([av_hist, av], sort=False)
 
 
 # save averages to excel
