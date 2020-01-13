@@ -17,6 +17,14 @@ def read_historical_data(fname):
     colnames = av_hist.columns
     return av_hist, colnames
 
+def download_data(par):
+    df = pd.DataFrame()
+    for spar in par:
+        scraper = ScrapeDataIngatlan(dct=spar)
+        scraper.get_properties()
+        tmp = scraper.container.to_dataframe()
+        df = pd.concat([df, tmp])
+
 
 ### Collect data
 
@@ -28,23 +36,20 @@ search_params = [
                  {'city': 'Szeged', 'property_type': 'garazs', 'sale_type': 'elado'}
                  ]
 
-df = pd.DataFrame()
-for spar in search_params:
-    scraper = ScrapeDataIngatlan(dct=spar)
-    scraper.get_properties()
-    tmp = scraper.container.to_dataframe()
-    df = pd.concat([df, tmp])
 
-### read averages from excel
-av_hist, avhist_colnames = read_historical_data('averages.xlsx')
+if __name__ == '__main__':
+    df = download_data(search_params)
 
-### Calculate stats on the properties
-av = get_averages(df)
-av = av.loc[:,avhist_colnames]
+    ### read averages from excel
+    av_hist, avhist_colnames = read_historical_data('averages.xlsx')
 
-### concatenate historical and recent data
-av = pd.concat([av_hist, av], sort=False)
+    ### Calculate stats on the properties
+    av = get_averages(df)
+    av = av.loc[:,avhist_colnames]
+
+    ### concatenate historical and recent data
+    av = pd.concat([av_hist, av], sort=False)
 
 
-# save averages to excel
-av.to_excel('averages.xlsx', index=True)
+    # save averages to excel
+    av.to_excel('averages.xlsx', index=True)
