@@ -5,11 +5,15 @@ import matplotlib.pyplot as plt
 from property import *
 
 def get_averages(df):
-    av = df.groupby(['city', 'type']).apply(lambda g: g.mean(skipna=False)).reset_index()
-    av['Date'] = pd.datetime.today()
+    av = df.groupby(['city', 'type'])['city', 'type', 'land_size', 'price', 'size', 'unit_price'].apply(lambda g: g.mean(skipna=False)).reset_index()
+    xx = df.groupby(['city', 'type'])['price'].count().reset_index()
+    xx = xx.rename(columns={'price':'count'})
+    av = av.merge(xx, on=['city', 'type'])
+    av['Date'] = pd.datetime.today().strftime("%Y-%m-%d")
     av['Date'] = pd.to_datetime(av['Date'])
     av = av.set_index('Date')
     return av
+
 
 def read_historical_data(fname):
     av_hist = pd.read_excel(fname)
@@ -24,6 +28,7 @@ def download_data(par):
         scraper.get_properties()
         tmp = scraper.container.to_dataframe()
         df = pd.concat([df, tmp])
+    return(df)
 
 
 ### Collect data
