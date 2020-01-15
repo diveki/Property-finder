@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import datetime as dt
+import seaborn as sns
 from property import *
 
 def get_averages(df):
@@ -34,7 +36,7 @@ def download_data(par):
 ### Collect data
 
 search_params = [
-                #  {'city': 'Szeged', 'property_type': 'haz', 'sale_type': 'elado'},
+                 {'city': 'Szeged', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Algyo', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Morahalom', 'property_type': 'haz', 'sale_type': 'elado'},
                 #  {'city': 'Szeged', 'property_type': 'lakas', 'sale_type': 'elado'},
@@ -43,10 +45,15 @@ search_params = [
 
 
 if __name__ == '__main__':
-    df = download_data(search_params)
+    date = dt.datetime.today()
+    path_name = 'Data'
+    save_name = os.path.join(path_name, date.strftime('%Y%m%d') + '_result.xlsx')
 
+    df = download_data(search_params)
+    df['Date'] = pd.to_datetime(date)
+    df.to_excel(save_name, index=False)
     ### read averages from excel
-    av_hist, avhist_colnames = read_historical_data('averages.xlsx')
+    av_hist, avhist_colnames = read_historical_data('Averages/averages.xlsx')
 
     ### Calculate stats on the properties
     av = get_averages(df)
