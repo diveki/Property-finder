@@ -8,6 +8,7 @@ import re
 import tqdm
 import time
 import pickle
+import datetime as dt
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -201,6 +202,7 @@ class ScrapeDataIngatlan(ScrapeData):
         self.property_type = dct.get('property_type', 'haz')
         self.sale_type     = dct.get('sale_type', 'elado')
         self.container     = PropertyContainer()
+        self._log = open('logs.txt', 'w')
 
     def create_query_url(self):
         url = self._url + '/' + self._queryterm + '/' + self.sale_type + '+' + self.property_type + '+' + self.city.lower()
@@ -224,9 +226,13 @@ class ScrapeDataIngatlan(ScrapeData):
 
     def get_target_pages(self, url_list):
         bs = []
-        for url in tqdm.tqdm(url_list):
+        for url in url_list:
             r = self.query_search(url, self._header)
-            bs.append(BeautifulSoup(r.text, 'html.parser'))
+            try:
+                bs.append(BeautifulSoup(r.text, 'html.parser'))
+            except:
+                print(f'`{url}` cannot be loaded!!', file=self._log)
+                bs.append('Missing')
         return bs
 
     def initialize_property_class(self):
@@ -243,10 +249,16 @@ class ScrapeDataIngatlan(ScrapeData):
         urlslist = self.get_url_list_of_items_found()
         pages = self.get_target_pages(urlslist)
         prop_class = self.initialize_property_class()
-        for ii in tqdm.tqdm(range(len(urlslist))):
+        for ii in range(len(urlslist)):
+            if ii % 200 == 0:
+                ttime = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                print(f'/n{ttime} - {self.city}, {self.property_type}: {ii}/{len(urlslist)}/n', file=self._log)
+            if pages[ii] == 'Missing':
+                continue
             features = self.populate_property(urlslist[ii], pages[ii])
             prop = prop_class(features)
             self.container.add(prop)
+        self._log.close()
 
     def populate_property(self, url, page):
         dct = {}
@@ -452,7 +464,7 @@ class ScrapeDataIngatlan(ScrapeData):
             self._driver.execute_script("arguments[0].scrollIntoView();", element)
             element = WebDriverWait(self._driver, 10).until(EC.presence_of_element_located((By.ID, "details-map")))
         except:
-            print(f'`{url}` has some issues to provide the `map-holder` css element!')
+            print(f'`{url}` has some issues to provide the `map-holder` css element!', file=self._log)
             crd = None
         try:
             bs = BeautifulSoup(self._driver.page_source, 'html.parser')
@@ -460,9 +472,8 @@ class ScrapeDataIngatlan(ScrapeData):
             crd = openmap['data-bbox']
             crd = self._get_coordinates_from_text(crd)
         except:
-            print(f'`{url}` has some issues to provide coordinates!')
+            print(f'`{url}` has some issues to provide coordinates!', file=self._log)
             crd = None
-        # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
         dct['coordinates'] = crd
         return dct
 
@@ -490,7 +501,7 @@ class ScrapeDataIngatlan(ScrapeData):
             but = element.find_element_by_tag_name('button')
             but.click()
         except:
-            print('Could not click on phone number')
+            print('Could not click on phone number', file=self._log)
             ag = None
         try:
             bs = BeautifulSoup(self._driver.page_source, 'html.parser')
@@ -500,7 +511,7 @@ class ScrapeDataIngatlan(ScrapeData):
             ag = {'name':name, 'phone':phone, 'agency':agency}
             ag = Advertiser(dct=ag)
         except:
-            print(f'`{url}` has some issues to provide advertiser details!')
+            print(f'`{url}` has some issues to provide advertiser details!', file=self._log)
             ag = None
         # # elem = self._get_page_element(bs, 'div', attrs={'id':'details-map'})
         dct['advertiser'] = ag
@@ -541,7 +552,7 @@ class ScrapeDataIngatlan(ScrapeData):
         try:
             elem = bs.find(tag_name, attrs=attrs)
         except AttributeError:
-            print(f'`{attrs}` is not found')
+            print(f'`{attrs}` is not found', file=self._log)
             elem = None
         return elem
 
@@ -555,7 +566,7 @@ class ScrapeDataIngatlan(ScrapeData):
     def _return_pages(self, url_main, page_num):
         pages = []
         # for ii in range(2,3):#tqdm.tqdm(range(2, page_num+1)):
-        for ii in tqdm.tqdm(range(2, page_num+1)):
+        for ii in range(2, page_num+1):
             url = url_main + f'?page={ii}'
             r = self.query_search(url, self._header)
             pages.append(BeautifulSoup(r.text, 'html.parser'))

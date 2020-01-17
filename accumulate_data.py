@@ -29,7 +29,7 @@ def download_data(par):
         scraper = ScrapeDataIngatlan(dct=spar)
         scraper.get_properties()
         tmp = scraper.container.to_dataframe()
-        df = pd.concat([df, tmp])
+        df = pd.concat([df, tmp], sort=False)
     return(df)
 
 
@@ -39,7 +39,7 @@ search_params = [
                  {'city': 'Szeged', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Algyo', 'property_type': 'haz', 'sale_type': 'elado'},
                  {'city': 'Morahalom', 'property_type': 'haz', 'sale_type': 'elado'},
-                #  {'city': 'Szeged', 'property_type': 'lakas', 'sale_type': 'elado'},
+                 {'city': 'Szeged', 'property_type': 'lakas', 'sale_type': 'elado'},
                  {'city': 'Szeged', 'property_type': 'garazs', 'sale_type': 'elado'}
                  ]
 
@@ -64,4 +64,4 @@ if __name__ == '__main__':
 
 
     # save averages to excel
-    av.to_excel('averages.xlsx', index=True)
+    av.to_excel('Averages/averages.xlsx', index=True)
