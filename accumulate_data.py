@@ -23,13 +23,14 @@ def read_historical_data(fname):
     colnames = av_hist.columns
     return av_hist, colnames
 
-def download_data(par):
+def download_data(par, save_name):
     df = pd.DataFrame()
     for spar in par:
         scraper = ScrapeDataIngatlan(dct=spar)
         scraper.get_properties()
         tmp = scraper.container.to_dataframe()
         df = pd.concat([df, tmp], sort=False)
+        df.to_excel(save_name, index=False)
     return(df)
 
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     path_name = 'Data'
     save_name = os.path.join(path_name, date.strftime('%Y%m%d') + '_result.xlsx')
 
-    df = download_data(search_params)
+    df = download_data(search_params, save_name)
     df['Date'] = pd.to_datetime(date)
     df.to_excel(save_name, index=False)
     ### read averages from excel
