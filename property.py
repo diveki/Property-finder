@@ -246,9 +246,13 @@ class ScrapeDataIngatlan(ScrapeData):
             raise TypeError('`self.property_type` has a wrong definition!!')
 
     def get_properties(self):
+        print(f'Getting url list', file=self._log)
         urlslist = self.get_url_list_of_items_found()
+        print(f'Getting target pages list', file=self._log)
         pages = self.get_target_pages(urlslist)
+        print(f'Initializing property types', file=self._log)
         prop_class = self.initialize_property_class()
+        print(f'Start visiting each property page', file=self._log)
         for ii in range(len(urlslist)):
             if ii % 200 == 0:
                 ttime = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -258,6 +262,7 @@ class ScrapeDataIngatlan(ScrapeData):
             features = self.populate_property(urlslist[ii], pages[ii])
             prop = prop_class(features)
             self.container.add(prop)
+        print(f'Finished visiting each property page', file=self._log)
         self._log.close()
 
     def populate_property(self, url, page):
@@ -457,6 +462,7 @@ class ScrapeDataIngatlan(ScrapeData):
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
+            chrome_options.add_argument("--disable-dev-shm-usage")            
             self._driver = webdriver.Chrome(options=chrome_options)
         self._driver.get(url)
         try:
@@ -494,6 +500,7 @@ class ScrapeDataIngatlan(ScrapeData):
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--no-sandbox') # required when running as root user. otherwise you would get no sandbox errors.
+            chrome_options.add_argument("--disable-dev-shm-usage")
             self._driver = webdriver.Chrome(options=chrome_options)
         self._driver.get(url)
         try:
