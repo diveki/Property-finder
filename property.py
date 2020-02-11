@@ -300,7 +300,7 @@ class ScrapeDataIngatlan(ScrapeData):
         return dct
 
     def _populate_price(self, dct, bs):
-        unit_conversion = {'ezer': 1000., 'millió':1000000.}
+        unit_conversion = {'ezer': 1000., 'millió':1000000., 'milliárd':1e9}
         elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-price'})
         pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
         price = pr.text.split()
