@@ -180,11 +180,14 @@ class ScrapeData:
 
     def query_search(self, url, header={}):
         time.sleep(3)
-        r = requests.get(url, headers=header)
+        try:
+            r = requests.get(url, headers=header)
+        except:
+            return 'ProblemWithLink'
         if r.status_code == 200:
             return r
         else:
-            print(f'There was a problem whith request. Status code is {r.status_code}')
+            print(f'There was a problem whith request. Status code is {r.status_code}. It happened in query_search()')
             return None
 
 
@@ -231,7 +234,7 @@ class ScrapeDataIngatlan(ScrapeData):
             try:
                 bs.append(BeautifulSoup(r.text, 'html.parser'))
             except:
-                print(f'`{url}` cannot be loaded!!', file=self._log)
+                print(f'`{url}` cannot be loaded!!. Error happened in get_target_pages() method.', file=self._log)
                 bs.append('Missing')
         return bs
 
@@ -576,7 +579,11 @@ class ScrapeDataIngatlan(ScrapeData):
         for ii in range(2, page_num+1):
             url = url_main + f'?page={ii}'
             r = self.query_search(url, self._header)
-            pages.append(BeautifulSoup(r.text, 'html.parser'))
+            try:
+                pages.append(BeautifulSoup(r.text, 'html.parser'))
+            except:
+                print(f'`{url}` cannot be loaded!!. Error happened in _return_pages() method.', file=self._log)
+                pages.append('NoPage')
         return pages
 
     def _get_page_numbers(self, bs):

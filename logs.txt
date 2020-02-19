@@ -2,7 +2,7 @@ Getting url list
 Getting target pages list
 Initializing property types
 Start visiting each property page
-/n2020-02-10 20:00:59 - Szeged, garazs: 0/89/n
+/n2020-02-19 17:54:29 - Szeged, garazs: 0/86/n
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -23,14 +23,12 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rakoczi+utca/30770635` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+szamos+utca/30749242` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -66,6 +64,7 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fakopancs+utca/30314270` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -88,10 +87,8 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/29773289` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca/29758859` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -104,8 +101,6 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajnal+utca/29467505` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -150,6 +145,7 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rona+utca/30845398` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -166,6 +162,7 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kortoltes+utca+57/31220668` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -174,10 +171,12 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca/31066873` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+vasas+szent+peter+utca+15/31056451` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+gondor+sor+9-18/31055386` has some issues to provide advertiser details!
@@ -187,14 +186,4 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+halo+utca/30951286` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+halo+utca/30918352` has some issues to provide advertiser details!
 Finished visiting each property page
