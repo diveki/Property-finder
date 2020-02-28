@@ -2,7 +2,7 @@ Getting url list
 Getting target pages list
 Initializing property types
 Start visiting each property page
-/n2020-02-19 17:54:29 - Szeged, garazs: 0/86/n
+/n2020-02-26 18:23:59 - Szeged, garazs: 0/87/n
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -31,6 +31,7 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rakoczi+utca/30770635` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -47,13 +48,13 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/30623152` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+tompai+kapu+ut+2b/30521851` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -64,14 +65,15 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fakopancs+utca/30314270` has some issues to provide advertiser details!
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kalvaria+sugarut/30320096` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+allomas+utca/30046589` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+tisza+lajos+korut+18-20/29968853` has some issues to provide advertiser details!
@@ -145,7 +147,11 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rona+utca/30845398` has some issues to provide advertiser details!
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+dani+utca+7b/31249822` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
@@ -180,10 +186,6 @@ Start visiting each property page
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+gondor+sor+9-18/31055386` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 Finished visiting each property page
