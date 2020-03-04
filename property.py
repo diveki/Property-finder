@@ -9,6 +9,7 @@ import tqdm
 import time
 import pickle
 import datetime as dt
+import re
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -314,7 +315,9 @@ class ScrapeDataIngatlan(ScrapeData):
     def _populate_size(self, dct, bs):
         elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-area-size'})
         pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
-        size = pr.text.split()[0]
+        tt = pr.text.replace(' ', '')
+        tt = tt.replace(',', '')
+        size = re.findall(r'\d+', tt)[0]
         dct['size'] = float(size)
         return dct
 
@@ -322,7 +325,10 @@ class ScrapeDataIngatlan(ScrapeData):
         try:
             elem = self._get_page_element(bs, 'div', attrs={'class':'parameter parameter-lot-size'})
             pr = self._get_page_element(elem, 'span', attrs={'class':'parameter-value'})
-            size = float(pr.text.split()[0])
+            tt = pr.text.replace(' ', '')
+            tt = tt.replace(',', '')
+            size = re.findall(r'\d+', tt)[0]
+            size = float(size)
         except:
             size = None
         dct['land_size'] = size
