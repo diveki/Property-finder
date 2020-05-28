@@ -2,230 +2,39 @@ Getting url list
 Getting target pages list
 Initializing property types
 Start visiting each property page
-/n2020-03-17 09:18:42 - Szeged, garazs: 0/87/n
+/n2020-05-27 16:05:26 - Szeged, garazs: 0/82/n
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+sarkany+utca/31088473` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca/31066873` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-moravaros/elado+garazs/onallo/csongrad+megye+szeged/31044328` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/teremgarazs/csongrad+megye+szeged/31027225` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/30996184` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/30996175` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+halo+utca/30918352` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/30893779` has some issues to provide advertiser details!
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+debreceni+utca/31438387` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+debreceni+utca/30890884` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kisteleki+ede+utca/30868087` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-ujszeged/elado+garazs/teremgarazs/csongrad+megye+szeged/30855019` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-petofitelep/elado+garazs/onallo/csongrad+megye+szeged/30839857` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-ujszeged/elado+garazs/onallo/csongrad+megye+szeged/30836413` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rakoczi+utca/30770635` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+gelei+jozsef+utca/30763165` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+szamos+utca/30749242` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-ujszeged/elado+garazs/onallo/csongrad+megye+szeged/30748894` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-Could not click on phone number
-`https://ingatlan.com/szeged-felsovaros/elado+garazs/onallo/csongrad+megye+szeged/30718819` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kenguru+koz+3/30698986` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+allomas+utca+8/30698128` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/30623152` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-alsovaros/elado+garazs/onallo/csongrad+megye+szeged/30596284` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-tarjan/elado+garazs/onallo/csongrad+megye+szeged/30582577` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+vedres+utca/30542344` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+tompai+kapu+ut+2b/30521851` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+batthyany+utca/30441862` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+romai+korut/30437149` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/30388024` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kalvaria+sugarut/30320096` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fakopancs+utca/30314270` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/30163421` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/30119699` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+allomas+utca/30046589` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+tisza+lajos+korut+18-20/29968853` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-moravaros/elado+garazs/onallo/csongrad+megye+szeged/29963504` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/29963495` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-alsovaros/elado+garazs/onallo/csongrad+megye+szeged/29856968` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+korda+utca/29811488` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajnal+utca/29726231` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca/29705279` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajnal+utca/29467505` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-tarjan/elado+garazs/onallo/csongrad+megye+szeged/29337998` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+mikszath+kalman+utca/29327669` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca+49/29216258` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged/29160683` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-tarjan/elado+garazs/onallo/csongrad+megye+szeged/29142071` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+retek+utca/29130023` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-alsovaros/elado+garazs/onallo/csongrad+megye+szeged/28924934` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/28816721` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+sik+sandor+utca/28372364` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-rokus/elado+garazs/onallo/csongrad+megye+szeged/28341062` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+epito+utca/28200935` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+boldogasszony+sugarut/27892517` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rakoczi+utca/27705812` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/beallo/csongrad+megye+szeged+beke+utca/26782804` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+tisza+lajos+korut+13/24546923` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+tisza+lajos+korut+13/24546883` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+tisza+lajos+korut+13/24546798` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-belvaros/elado+garazs/onallo/csongrad+megye+szeged/22665475` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+felso+tisza+part/21196613` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+felso+tisza+part/21196606` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+pacsirta+utca/29222471` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fo+fasor/31372288` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+vedres+utca/30542383` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+mikszath+kalman+utca/29605775` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+csongradi+sugarut/31356301` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajnal+utca/31342528` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+jozsef+attila+sugarut+138/31337995` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+teleki+utca/31322242` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-tarjan/elado+garazs/onallo/csongrad+megye+szeged/31315852` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+baross+laszlo+utca+2/31293856` has some issues to provide advertiser details!
@@ -239,22 +48,147 @@ Could not click on phone number
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+halo+utca/31263388` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-ujszeged/elado+garazs/onallo/csongrad+megye+szeged/31255321` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+ybl+miklos+utca/31229512` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+kortoltes+utca+57/31220668` has some issues to provide advertiser details!
-`{'class': 'parameter-value'}` is not found
-`{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-franciahogy-lakopark/elado+garazs/onallo/csongrad+megye+szeged/31200295` has some issues to provide advertiser details!
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
 `{'class': 'parameter-value'}` is not found
-`https://ingatlan.com/szeged-franciahogy-lakopark/elado+garazs/onallo/csongrad+megye+szeged/31110778` has some issues to provide advertiser details!
+Could not click on phone number
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+gelei+jozsef+utca/31197484` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+halo+utca/30951286` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+allomas+utca+8/30698128` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/teremgarazs/csongrad+megye+szeged+tompai+kapu+ut+2b/30521851` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+romai+korut/30437149` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fakopancs+utca/30314270` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+allomas+utca/30046589` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+tisza+lajos+korut+18-20/29968853` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajnal+utca/29467505` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+becsi+korut+25/31505110` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+baross+laszlo+utca/31497469` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+fesu+utca/31438316` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+veres+acs+utca+49/30701422` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+romai+korut+13/31511657` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+rom+utca/31502831` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+hajos+utca/31498461` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+szabadsag+ter/31488706` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
+`https://ingatlan.com/szeged/elado+garazs/onallo/csongrad+megye+szeged+petofi+sandor+sugarut/31486913` has some issues to provide advertiser details!
+`{'class': 'parameter-value'}` is not found
+`{'class': 'parameter-value'}` is not found
 Finished visiting each property page
